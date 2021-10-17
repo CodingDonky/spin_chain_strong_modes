@@ -1,0 +1,8 @@
+# Anything in test folder
+test/
+
+# File extensions to ignore
+*.html
+*.png
+*.jpg
+*.jpeg
