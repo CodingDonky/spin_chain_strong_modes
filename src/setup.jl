@@ -29,15 +29,32 @@ Base.load_path()
 using ED
 
 
-# Defining global variablesused throughout the codebase
+### Global Variables ###
 
-id = [[1 0] ; [0 1]].+0im;
-σx = [[0 1] ; [1 0]].+0im;
-σy = [[0 -im] ; [im 0]];
-σz = [[1 0] ; [0 -1]].+0im;
+# Pauli spin matrices
+# id = [[1 0] ; [0 1]].+0im;
+# σx = [[0 1] ; [1 0]].+0im;
+# σy = [[0 -im] ; [im 0]];
+# σz = [[1 0] ; [0 -1]].+0im;
 
-⊗(x,y) = kron(x,y);
+# Pauli spin matrices
+id = [1 0 ; 0 1].+0im;
+σx = [0 1 ; 1 0].+0im;
+σy = [0 -im ; im 0];
+σz = [1 0 ; 0 -1].+0im;
+# Pauli raising / lowering matrices
+σp = σx+im.*σy # σ+
+σm = σx-im.*σy # σ-
+
+### Global Functions ###
 
 function print_symbols()
     println("id, σx, σy, σz, ⊗(x,y)")
 end
+
+function commute(A, B)
+    return A*B - B*A
+end
+
+# Tensor product shorthand
+⊗(x,y) = kron(x,y);
